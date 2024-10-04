@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>1. Calculate sum </h1>
+   <label for="firstNumber">First number</label>
+   <input type="number" id="firstNumber"> <br>
+    <label for="secondNumber">Second number </label>
+    <input type="number" id="secondNumber"> <br> <br>
+    <button type="button" onclick="calculate()">Calculate</button>
+    <p>Sum: <span id="result"></span></p>
+
+
+
+
+    <h1>2. Guess the number</h1>
+    <label for="guess">Input your guess</label>
+    <input type="number" id="guess">
+    <p id="random"></p>
+    <button class="button" onclick="ourGuess()">Check</button>
+
+    
+   <h1>3. </h1>
+    <label for="n1">number1</label>
+    <input type="number" id="n1"> <br>
+    <label for="n2">number2</label>
+    <input type="number" id="n2"> <br> <br>
+ <button class="button" onclick="checkRange()">Check</button>
+ <p id="demo"></p>
+ 
+
+
+ <h1>4. Find the closest value to 100 from 2 numbers</h1>
+ <label for="no1">number 1</label>
+ <input type="text" name="" id="no1"> <br>
+ <label for="no2">number 2</label>
+ <input type="number" id="no2"> <br> <br>
+ <button class="button" onclick="closestNumber()">Find the closest number</button>
+ <p id="closest"></p>
+ <h1>5. Add Items of Array</h1>
+ <input type="number" id="Num">
+ <button type="button" onclick="addItems()">Add</button>
+ <button type="button" onclick="display()">Display</button>
+ <p id="new"></p>
+
+    
+    
+
+    
+    <script>
+        
+        function calculate(){
+           let num1 =parseInt(document.getElementById("firstNumber").value);
+           let num2 = parseInt(document.getElementById("secondNumber").value);
+           let result;
+           
+           if (num1 === num2) {
+            result = (3 * (num1 + num2));
+           }
+           else {
+           result = num1 + num2;
+           }
+           document.getElementById("result").innerHTML = result;
+
+
+           
+        }
+           
+           let randomNumber;
+
+function random() {
+    randomNumber = Math.floor(Math.random() * 10) + 1; 
+}
+
+
+random();
+
+function ourGuess() {
+    let number = parseInt(document.getElementById("guess").value);
+    if (randomNumber === number) {
+        document.getElementById("random").innerHTML = "Good Work!";
+    } else {
+        document.getElementById("random").innerHTML = "Not matched! The correct number is " + randomNumber;
+    }
+}
+function checkRange(){
+    let numberOne = parseInt(document.getElementById("n1").value);
+    let numberTwo = parseInt(document.getElementById("n2").value);
+    if ((numberOne >= 50 && numberOne <= 99) || (numberTwo >= 50 && numberTwo <= 99) ){
+        document.getElementById("demo").innerHTML = "True"; 
+        
+
+    }
+    else {
+        document.getElementById("demo").innerHTML = "False";
+    }
+   
+    
+}
+function closestNumber(){
+const x = parseFloat(100);
+ let number_1 = parseInt(document.getElementById("no1").value);
+ let number_2 = parseInt(document.getElementById("no2").value);
+
+ let diff_1 = Math.abs(x - number_1);
+ let diff_2 = Math.abs(x - number_2);
+
+ if(diff_1 > diff_2){
+   document.getElementById("closest").innerHTML = number_2;
+ }
+ else if(diff_1 < diff_2){
+    document.getElementById("closest").innerHTML = number_1;
+ }
+ else {
+    document.getElementById("closest").innerHTML = "Both are equally close"
+ }
+
+
+}
+let arrayNumber = [];
+function addItems(){
+       const inputNumber = document.getElementById("Num");
+       arrayNumber.push (inputNumber.value);
+       inputNumber.value = '';
+
+
+
+
+        }
+ function display(){
+    const displayItems = document.getElementById("new");
+   
+            displayItems.innerHTML = ''; 
+            
+            for (let i = 0; i < arrayNumber.length; i++) {
+                displayItems.innerHTML += 'Element ' + (i + 1) + ' = ' + arrayNumber[i] + '<br>';
+            }
+    
+ }
+
+    </script>
+</body>
+</html>
